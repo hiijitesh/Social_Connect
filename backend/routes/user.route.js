@@ -14,8 +14,10 @@ const {
   resetPassword,
   getMyPosts,
   getUserPosts,
-} = require("../controllers/user");
-const { isAuthenticated } = require("../middlewares/auth");
+} = require("../controllers/user.controller");
+
+const { isAuthenticated } = require("../middlewares/auth.middl");
+
 const router = express.Router();
 
 router.route("/register").post(register);

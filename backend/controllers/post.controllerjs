@@ -1,6 +1,8 @@
-const Post = require("../models/Post");
-const User = require("../models/User");
+const Post = require("../models/Post.model");
+const User = require("../models/User.model");
 const cloudinary = require("cloudinary");
+
+//New Post
 exports.createPost = async (req, res) => {
   try {
     const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
@@ -34,6 +36,8 @@ exports.createPost = async (req, res) => {
   }
 };
 
+
+// Delete Post
 exports.deletePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -75,6 +79,8 @@ exports.deletePost = async (req, res) => {
   }
 };
 
+
+// Like & Unlike the Post
 exports.likeAndUnlikePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -85,10 +91,12 @@ exports.likeAndUnlikePost = async (req, res) => {
         message: "Post not found",
       });
     }
-
+    
+    // if the post is already liked, unlike it
     if (post.likes.includes(req.user._id)) {
       const index = post.likes.indexOf(req.user._id);
 
+      //slice will delete that enrty starting form index to 1
       post.likes.splice(index, 1);
 
       await post.save();
@@ -97,7 +105,10 @@ exports.likeAndUnlikePost = async (req, res) => {
         success: true,
         message: "Post Unliked",
       });
-    } else {
+    } 
+
+    //Like the post 
+    else {
       post.likes.push(req.user._id);
 
       await post.save();
@@ -114,6 +125,8 @@ exports.likeAndUnlikePost = async (req, res) => {
     });
   }
 };
+
+
 
 exports.getPostOfFollowing = async (req, res) => {
   try {

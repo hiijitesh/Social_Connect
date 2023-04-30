@@ -1,5 +1,5 @@
-const User = require("../models/User");
-const Post = require("../models/Post");
+const User = require("../models/User.model");
+const Post = require("../models/Post.model");
 const { sendEmail } = require("../middlewares/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
@@ -285,8 +285,8 @@ exports.deleteMyProfile = async (req, res) => {
       }
       await post.save();
     }
-    // removing all likes of the user from all posts
 
+    // removing all likes of the user from all posts
     for (let i = 0; i < allPosts.length; i++) {
       const post = await Post.findById(allPosts[i]._id);
 
@@ -398,7 +398,7 @@ exports.forgotPassword = async (req, res) => {
         subject: "Reset Password",
         message,
       });
-
+      
       res.status(200).json({
         success: true,
         message: `Email sent to ${user.email}`,

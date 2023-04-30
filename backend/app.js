@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 const path = require("path");
+
+
 if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config({ path: "backend/config/config.env" });
+  require("dotenv").config();
 }
 
 // Using Middlewares
@@ -12,12 +14,12 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 
 // Importing Routes
-const post = require("./routes/post");
-const user = require("./routes/user");
+const post = require("./routes/post.route");
+const user = require("./routes/user.route");
 
 // Using Routes
-app.use("/api/v1", post);
-app.use("/api/v1", user);
+app.use("/api", post);
+app.use("/api", user);
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
