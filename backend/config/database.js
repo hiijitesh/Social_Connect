@@ -5,7 +5,9 @@ exports.connectDatabase = () => {
 	mongoose
 		.connect(process.env.MONGO_URI)
 		.then((con) =>
-			console.log(`Database Connected ✅✅✅ to : ${con.connection.host}`)
+			console.log(
+				`Database Connected to the Social-Media Collection ✅✅✅`
+			)
 		)
 		.catch((err) => console.log(err))
 }

@@ -55,7 +55,6 @@ userSchema.pre("save", async function (next) {
 	if (this.isModified("password")) {
 		this.password = await bcrypt.hash(this.password, 10)
 	}
-
 	next()
 })
 
@@ -78,7 +77,6 @@ userSchema.methods.getResetPasswordToken = function () {
 		.update(resetToken)
 		.digest("hex")
 	this.resetPasswordExpire = Date.now() + 10 * 60 * 1000
-
 	return resetToken
 }
 

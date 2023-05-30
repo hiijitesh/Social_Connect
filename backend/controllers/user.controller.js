@@ -103,7 +103,6 @@ exports.deleteMyProfile = async (req, res) => {
 		await user.remove()
 
 		// Logout user after deleting profile
-
 		res.cookie("token", null, {
 			expires: new Date(Date.now()),
 			httpOnly: true,

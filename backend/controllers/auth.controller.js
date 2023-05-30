@@ -1,7 +1,12 @@
+const User = require("../models/User.model")
+const Post = require("../models/Post.model")
+const { sendEmail } = require("../middlewares/send.email")
+const crypto = require("crypto")
+const cloudinary = require("cloudinary")
+
 exports.register = async (req, res) => {
 	try {
 		const { name, email, password, avatar } = req.body
-
 		let user = await User.findOne({ email })
 		if (user) {
 			return res
