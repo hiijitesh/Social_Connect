@@ -58,17 +58,17 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-//check if user password and db pass is same
+// check if user password and db pass is same
 userSchema.methods.matchPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-//Generate the token for the user
+// Generate the token for the user
 userSchema.methods.generateToken = function () {
   return jwt.sign({ _id: this._id }, process.env.JWT_SECRET);
 };
 
-//Get Reset Tokens
+// Get Reset Tokens
 userSchema.methods.getResetPasswordToken = function () {
   const resetToken = crypto.randomBytes(20).toString("hex");
 

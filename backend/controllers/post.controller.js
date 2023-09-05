@@ -2,7 +2,7 @@ const Post = require("../models/Post.model");
 const User = require("../models/User.model");
 const cloudinary = require("cloudinary");
 
-//New Post
+// New Post
 exports.createPost = async (req, res) => {
   try {
     const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
@@ -94,7 +94,7 @@ exports.likeAndUnlikePost = async (req, res) => {
     if (post.likes.includes(req.user._id)) {
       const index = post.likes.indexOf(req.user._id);
 
-      //slice will delete that enrty starting form index to 1
+      // slice will delete that enrty starting form index to 1
       post.likes.splice(index, 1);
 
       await post.save();
@@ -105,7 +105,7 @@ exports.likeAndUnlikePost = async (req, res) => {
       });
     }
 
-    //Like the post
+    // Like the post
     else {
       post.likes.push(req.user._id);
 
