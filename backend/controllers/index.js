@@ -1,3 +1,3 @@
-import * as controller from "."
+import * as controller from ".";
 
-export { controller }
+export { controller };
