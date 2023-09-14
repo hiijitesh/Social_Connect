@@ -40,11 +40,4 @@
     "lint-staged": "^14.0.1",
     "prettier": "2.8.8"
   },
-  "eslintConfig": {
-    "globals": {
-      "config": true,
-      "constant": true,
-      "utils": true
-    }
-  }
 }
