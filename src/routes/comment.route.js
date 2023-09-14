@@ -5,10 +5,9 @@ const express = require("express");
 // 	deleteComment,
 // } = require("../controllers/comment.controller")
 
+const router = express.Router();
 const commentController = require("../controllers/comment.controller");
 const { isAuthenticated } = require("../middlewares/auth.middleware");
-
-const router = express.Router();
 
 router.put(
   "/post/comment/:id",
