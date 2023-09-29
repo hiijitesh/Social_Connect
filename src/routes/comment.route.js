@@ -10,14 +10,14 @@ const commentController = require("../controllers/comment.controller");
 const { isAuthenticated } = require("../middlewares/auth.middleware");
 
 router.put(
-  "/post/comment/:id",
-  isAuthenticated,
-  commentController.commentOnPost
+    "/post/comment/:id",
+    isAuthenticated,
+    commentController.commentOnPost
 );
 router.delete(
-  "/post/comment/:id",
-  isAuthenticated,
-  commentController.deleteComment
+    "/post/comment/:id",
+    isAuthenticated,
+    commentController.deleteComment
 );
 
 // router

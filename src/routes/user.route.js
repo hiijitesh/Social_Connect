@@ -1,11 +1,11 @@
 const express = require("express");
 const {
-  followUser,
-  updateProfile,
-  deleteMyProfile,
-  myProfile,
-  getUserProfile,
-  getAllUsers,
+    followUser,
+    updateProfile,
+    deleteMyProfile,
+    myProfile,
+    getUserProfile,
+    getAllUsers,
 } = require("../controllers/user.controller");
 
 const router = express.Router();

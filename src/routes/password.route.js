@@ -10,15 +10,15 @@ const { isAuthenticated } = require("../middlewares/auth.middleware");
 const router = express.Router();
 
 router.put(
-  "/update/password",
-  isAuthenticated,
-  passwordController.updatePassword
+    "/update/password",
+    isAuthenticated,
+    passwordController.updatePassword
 );
 
 router.put(
-  "/forgot/password",
-  isAuthenticated,
-  passwordController.forgotPassword
+    "/forgot/password",
+    isAuthenticated,
+    passwordController.forgotPassword
 );
 router.put("/password/reset/:token", passwordController.resetPassword);
 
